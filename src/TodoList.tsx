@@ -1,20 +1,68 @@
-import React, { Component } from "react";
-import Todo from "./Todo";
+import React, { Component, FormEvent, Fragment } from "react";
+import Todo, { ITodo } from "./Todo";
 
-const todos = [
-  { text: 'Finir le jour 7', done: true},
-  { text: 'Apprendre React', done: false},
-  { text: 'Progresser grâce à RebootJS', done: false}
-];
-class TodoList extends Component {
+interface ITodoListState {
+  newTodoInput: string;
+  todos: ITodo[];
+}
+
+class TodoList extends Component<{}, ITodoListState> {
+  constructor(props: {}){
+    super(props);
+    this.state = {
+      newTodoInput: '',
+      todos: [
+        { text: 'Finir le jour 7', done: true},
+        { text: 'Apprendre React', done: false},
+        { text: 'Progresser grâce à RebootJS', done: false}
+      ]
+    }
+  }
+
+  changeTodoDone = (text: string) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if(todo.text === text){
+          return { ...todo, done: !todo.done }
+        }
+        return todo
+      })
+    })
+  }
+
+  handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    // ajouter le todo
+    this.setState({
+      newTodoInput: '',
+      todos: [
+        ...this.state.todos,
+        {
+          text: this.state.newTodoInput,
+          done: false
+        }
+      ]
+    })
+  }
+
+  handleChange = (newTodoInput: string) => {
+    this.setState({newTodoInput: newTodoInput})
+  }
+
   render(){
     return (
-      <ul>
-        {todos.map((todo, index) =>
-          <Todo key={index} todo={todo}/>
-        )}
-      </ul>
-
+      <Fragment>
+        <ul>
+          {this.state.todos.map((todo, index) =>
+            <Todo changeTodoDone={this.changeTodoDone} key={index} todo={todo} />
+          )}
+        </ul>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.newTodoInput} onChange={(e) => this.handleChange(e.target.value)}/>
+          <input type="submit" value="Ajouter"/>
+        </form>
+      </Fragment>
     )
   }
 }

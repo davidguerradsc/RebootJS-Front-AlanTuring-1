@@ -1,30 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-interface ITodoProps {
-  todo: { text: string, done: boolean }
-}
-
-interface ITodoState {
+export interface ITodo {
+  text: string;
   done: boolean;
 }
+interface ITodoProps {
+  todo: ITodo;
+  changeTodoDone: (text: string) => void;
+}
 
-class Todo extends React.Component<ITodoProps, ITodoState> {
-  constructor(props: ITodoProps){
-    super(props);
-
-    this.state = { done: props.todo.done };
-  }
-
-  completeTodo = () => {
-    this.setState({done: true});
-  }
-
+class Todo extends React.Component<ITodoProps> {
   render(){
     return (
-      <div>
-        <button onClick={this.completeTodo}>C'est fait</button>
-        <li>Todo : {this.props.todo.text}, Done: {this.state.done.toString()}</li>
-      </div>
+      <Fragment>
+        <button onClick={(_e) => this.props.changeTodoDone(this.props.todo.text)}>C'est fait</button>
+        <li>Todo : {this.props.todo.text}, Done: {this.props.todo.done.toString()}</li>
+      </Fragment>
     )
   };
 }
