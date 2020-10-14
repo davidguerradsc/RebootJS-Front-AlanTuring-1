@@ -1,7 +1,7 @@
 import React, { Component, FormEvent, Fragment } from "react";
 import Todo, { ITodo } from "./Todo";
 
-interface ITodoListState {
+export interface ITodoListState {
   newTodoInput: string;
   todos: ITodo[];
 }
@@ -58,8 +58,14 @@ class TodoList extends Component<{}, ITodoListState> {
             <Todo changeTodoDone={this.changeTodoDone} key={index} todo={todo} />
           )}
         </ul>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.newTodoInput} onChange={(e) => this.handleChange(e.target.value)}/>
+        <form data-testid="todolist-form" onSubmit={this.handleSubmit}>
+          <input
+            name="newTodoInput"
+            data-testid="newTodoInput"
+            type="text"
+            value={this.state.newTodoInput}
+            onChange={(e) => this.handleChange(e.target.value)}
+          />
           <input type="submit" value="Ajouter"/>
         </form>
       </Fragment>
