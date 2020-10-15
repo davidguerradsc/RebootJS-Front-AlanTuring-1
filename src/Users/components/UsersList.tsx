@@ -1,3 +1,4 @@
+import { List } from '@material-ui/core';
 import React from 'react';
 import { getUsers } from '../../api/users';
 import { IUser } from '../types';
@@ -28,7 +29,9 @@ class UsersList extends React.Component<{}, UsersListState>{
     if(this.state.users.length === 0){
       return <h1>Loading</h1>
     } else {
-      return this.state.users.map((user, index) => <UsersListItem key={index} user={user} />);
+      return <List>
+          {this.state.users.map((user, index) => <UsersListItem key={index} user={user} />)}
+      </List>
     }
   }
 }
