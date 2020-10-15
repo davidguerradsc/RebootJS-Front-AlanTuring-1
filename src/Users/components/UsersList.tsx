@@ -30,7 +30,7 @@ class UsersList extends React.Component<{}, UsersListState>{
       return <h1>Loading</h1>
     } else {
       return <List>
-          {this.state.users.map((user, index) => <UsersListItem key={index} user={user} />)}
+        {this.state.users.map((user, index) => <UsersListItem key={index} user={user} />)}
       </List>
     }
   }
