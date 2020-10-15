@@ -25,7 +25,6 @@ class UsersList extends React.Component<{}, UsersListState>{
   }
 
   render(){
-    // return this.state.users.length === 0 ? <h1>Loading</h1> :
     if(this.state.users.length === 0){
       return <h1>Loading</h1>
     } else {
