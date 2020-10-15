@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
+import { ITodo } from '../types';
 
-export interface ITodo {
-  text: string;
-  done: boolean;
-}
 interface ITodoProps {
   todo: ITodo;
   changeTodoDone: (text: string) => void;

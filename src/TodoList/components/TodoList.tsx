@@ -1,5 +1,6 @@
 import React, { Component, FormEvent, Fragment } from "react";
-import Todo, { ITodo } from "./Todo";
+import { ITodo } from "../types";
+import Todo from "./Todo";
 
 export interface ITodoListState {
   newTodoInput: string;

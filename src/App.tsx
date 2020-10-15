@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TodoList from './TodoList/components/TodoList';
+import UsersList from './Users/components/UsersList';
 
 function App() {
   return (
@@ -9,9 +9,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Regarde ma super Todo List
+        Super liste
         </p>
-        <TodoList />
+        <UsersList />
         <a
           className="App-link"
           href="https://reactjs.org"
