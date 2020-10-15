@@ -1,15 +1,27 @@
-import { Switch, Route } from 'react-router-dom';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import React from 'react';
+import { Router } from 'react-router-dom';
 import './App.css';
-import UsersList from './Users/components/UsersList';
-import TodoList from './TodoList/components/TodoList';
+import AppLayout from './Layout/AppLayout';
+import history from './history';
+import { blue, red } from '@material-ui/core/colors';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: blue,
+    secondary: {
+      main: "#000"
+    },
+    error: red,
+  },
+})
 function App() {
   return (
-    <Switch>
-      <Route path="/users" component={UsersList} />
-      <Route path="/" component={TodoList} />
-    </Switch>
+    <Router history={history}>
+      <ThemeProvider theme={theme}>
+        <AppLayout />
+      </ThemeProvider>
+    </Router>
   );
 }
 
