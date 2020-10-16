@@ -50,13 +50,13 @@ class RegisterForm extends React.Component<{}, RegisterFormState> {
               handleChange={this.handleChange}
             />
           </Box>
-          {/* <Box style={{margin: "2rem 0"}}>
+          <Box style={{margin: "2rem 0"}}>
             <CredentialSection
               password={password}
               confirmation={confirmation}
               handleChange={this.handleChange}
             />
-          </Box> */}
+          </Box>
         </form>
       </Container>
     )
