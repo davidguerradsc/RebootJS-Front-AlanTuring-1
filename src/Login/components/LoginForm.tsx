@@ -1,4 +1,4 @@
-import { Button, TextField } from '@material-ui/core';
+import { Box, Button, Container, Grid, TextField } from '@material-ui/core';
 import React from 'react';
 import { login } from '../../api/users';
 
@@ -30,30 +30,43 @@ class LoginForm extends React.Component<{}, LoginFormState> {
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit} >
-        <TextField
-          required
-          label="Email"
-          variant="outlined"
-          value={this.state.email}
-          onChange={(e) => this.handleChange("email", e.target.value)}
-          />
-        <TextField
-          required
-          type="password"
-          label="Password"
-          variant="outlined"
-          value={this.state.password}
-          onChange={(e) => this.handleChange("password", e.target.value)}
-          />
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-        >
-          Submit
-        </Button>
-      </form>
+      <Container maxWidth="xs">
+        <form onSubmit={this.handleSubmit} >
+          <Box style={{margin: "2rem 0"}}>
+            <TextField
+              required
+              label="Email"
+              variant="outlined"
+              fullWidth={true}
+              style={{paddingBottom: "1rem 0"}}
+              value={this.state.email}
+              onChange={(e) => this.handleChange("email", e.target.value)}
+              />
+            <TextField
+              required
+              type="password"
+              label="Password"
+              variant="outlined"
+              fullWidth={true}
+              value={this.state.password}
+              onChange={(e) => this.handleChange("password", e.target.value)}
+              />
+          </Box>
+          <Box style={{margin: "2rem 0"}}>
+            <Grid container justify="flex-end">
+              <Grid item xs={4}>
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                >
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+        </form>
+      </Container>
     )
   }
 }

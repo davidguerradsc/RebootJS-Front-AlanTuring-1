@@ -14,3 +14,4 @@ export function login(email: string, password: string): Promise<IUser>{
     }
   ).then(res => res.data)
 }
+
