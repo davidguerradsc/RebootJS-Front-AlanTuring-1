@@ -9,7 +9,7 @@ interface IdentitySectionProps {
 }
 
 class IdentitySection extends React.Component<IdentitySectionProps> {
-  render() {
+  render(){
     // const isValid = true
     // const errorDisplay = {
     //   error: true,
@@ -28,17 +28,17 @@ class IdentitySection extends React.Component<IdentitySectionProps> {
           label="Email"
           value={this.props.email}
           onChange={(e) => this.props.handleChange("email", e.target.value)}
-        />
+          />
         <TextField
           label="Firstname"
           value={this.props.firstname}
           onChange={(e) => this.props.handleChange("firstname", e.target.value)}
-        />
+          />
         <TextField
           label="Lastname"
           value={this.props.lastname}
           onChange={(e) => this.props.handleChange("lastname", e.target.value)}
-        />
+          />
       </Fragment>
     )
   }

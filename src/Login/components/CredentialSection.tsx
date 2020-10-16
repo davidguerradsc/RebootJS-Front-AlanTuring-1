@@ -1,7 +1,7 @@
 import React from 'react';
 
 class CredentialSection extends React.Component {
-  render() {
+  render(){
     return (
       <h1> Credentials </h1>
     )

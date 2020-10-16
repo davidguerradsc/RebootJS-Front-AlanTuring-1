@@ -24,22 +24,22 @@ class LoginScreen extends React.Component<{}, LoginScreenState> {
   render() {
     const selectedTab = this.state.selectedTab;
     return (
-      <Container maxWidth="lg" style={{ marginTop: '2rem' }} >
-        <Tabs
-          value={selectedTab}
-          onChange={this.handleChange}
-          variant="fullWidth"
-        >
-          <Tab label="Login" />
-          <Tab label="Register" />
-        </Tabs>
-        <TabPanel value={selectedTab} index={0}>
-          <LoginForm />
-        </TabPanel>
-        <TabPanel value={selectedTab} index={1}>
-          <RegisterForm />
-        </TabPanel>
-      </Container>)
+    <Container maxWidth="lg" style={{marginTop: '2rem'}} >
+      <Tabs
+        value={selectedTab}
+        onChange={this.handleChange}
+        variant="fullWidth"
+      >
+        <Tab label="Login" />
+        <Tab label="Register" />
+      </Tabs>
+      <TabPanel value={selectedTab} index={0}>
+        <LoginForm />
+      </TabPanel>
+      <TabPanel value={selectedTab} index={1}>
+        <RegisterForm />
+      </TabPanel>
+    </Container>)
   }
 }
 

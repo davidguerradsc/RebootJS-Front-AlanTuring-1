@@ -3,7 +3,7 @@ import React from 'react';
 import CredentialSection from './CredentialSection';
 import IdentitySection from './IdentitySection';
 
-interface RegisterFormState {
+interface RegisterFormState{
   email: string;
   firstname: string;
   lastname: string;
@@ -11,7 +11,7 @@ interface RegisterFormState {
   confirmation: string;
 }
 class RegisterForm extends React.Component<{}, RegisterFormState> {
-  constructor(props: {}) {
+  constructor(props: {}){
     super(props);
     this.state = {
       email: "",
@@ -37,26 +37,26 @@ class RegisterForm extends React.Component<{}, RegisterFormState> {
   }
 
 
-  render() {
+  render(){
     const { email, firstname, lastname, password, confirmation } = this.state;
     return (
       <Container maxWidth="sm">
         <form >
-          <Box style={{ margin: "2rem 0" }}>
+          <Box style={{margin: "2rem 0"}}>
             <IdentitySection
-            
+              email={email}
               firstname={firstname}
               lastname={lastname}
-              email={email}
               handleChange={this.handleChange}
             />
-          
+          </Box>
+          {/* <Box style={{margin: "2rem 0"}}>
             <CredentialSection
               password={password}
               confirmation={confirmation}
               handleChange={this.handleChange}
             />
-          </Box>
+          </Box> */}
         </form>
       </Container>
     )

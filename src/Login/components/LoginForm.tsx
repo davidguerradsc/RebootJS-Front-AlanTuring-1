@@ -32,16 +32,16 @@ class LoginForm extends React.Component<{}, LoginFormState> {
     return (
       <Container maxWidth="xs">
         <form onSubmit={this.handleSubmit} >
-          <Box style={{ margin: "2rem 0" }}>
+          <Box style={{margin: "2rem 0"}}>
             <TextField
               required
               label="Email"
               variant="outlined"
               fullWidth={true}
-              style={{ paddingBottom: "1rem 0" }}
+              style={{paddingBottom: "1rem 0"}}
               value={this.state.email}
               onChange={(e) => this.handleChange("email", e.target.value)}
-            />
+              />
             <TextField
               required
               type="password"
@@ -50,9 +50,9 @@ class LoginForm extends React.Component<{}, LoginFormState> {
               fullWidth={true}
               value={this.state.password}
               onChange={(e) => this.handleChange("password", e.target.value)}
-            />
+              />
           </Box>
-          <Box style={{ margin: "2rem 0" }}>
+          <Box style={{margin: "2rem 0"}}>
             <Grid container justify="flex-end">
               <Grid item xs={4}>
                 <Button
