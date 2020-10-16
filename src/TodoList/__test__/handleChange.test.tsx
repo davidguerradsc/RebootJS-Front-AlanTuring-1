@@ -1,5 +1,4 @@
 import React from "react";
-import { render, fireEvent, waitForElement } from "@testing-library/react";
 import TodoList from "../components/TodoList";
 import { shallow } from "enzyme";
 
@@ -19,7 +18,7 @@ describe("<TodoList />", () => {
     const wrapper = shallow(<TodoList />);
 
     wrapper.find({"data-testid": "newTodoInput"})
-                                .simulate('change', { target: { value: "newtodo" } });
+           .simulate('change', { target: { value: "newtodo" } });
 
     expect(wrapper.instance().state).toHaveProperty("newTodoInput", "newtodo");
   });
