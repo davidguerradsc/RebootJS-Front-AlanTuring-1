@@ -10,9 +10,9 @@ import { validateEmailField } from '../../Login/utils/validateEmailField';
 import { validateNameField } from '../../Login/utils/validateNameField';
 import { validatePasswordField } from '../../Login/utils/validatePasswordField';
 import Alert from '@material-ui/lab/Alert';
-import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
+import { Loading } from '../../Layout/Loading';
 
-interface RegisterFormState {
+interface RegisterFormState{
   status: 'error' | 'success' | 'unavailable'
   email: IFormField<string>;
   firstname: IFormField<string>;
@@ -22,9 +22,8 @@ interface RegisterFormState {
 }
 
 class ProfileScreen extends React.Component<{}, RegisterFormState> {
-  constructor(props: {}) {
+  constructor(props: {}){
     super(props);
-    // TODO Recupérer les infos depuis le back
     this.state = {
       status: 'unavailable',
       email: defaultStringFormField(),
@@ -35,12 +34,12 @@ class ProfileScreen extends React.Component<{}, RegisterFormState> {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(){
     getConnectedUser()
       .then(user => {
         this.setState({
           status: 'success',
-          email: {
+          email:{
             ...this.state.email,
             value: user.email
           },
@@ -92,23 +91,22 @@ class ProfileScreen extends React.Component<{}, RegisterFormState> {
     event.preventDefault();
 
     const { email, firstname, lastname, password, confirmation } = this.state
-    if (email.isValid && firstname.isValid && lastname.isValid && password.isValid && confirmation.isValid) {
+    if(email.isValid && firstname.isValid && lastname.isValid && password.isValid && confirmation.isValid){
       //register(...this.state).then((user) => alert(user.firstname));
     }
   }
 
 
-  render() {
+  render(){
     const { email, firstname, lastname, password, confirmation, status } = this.state;
-    if (status === "error") {
+    if(status === "error") {
       return <Alert severity="error">This is an error alert — check it out!</Alert>
-    } else if (status === "unavailable") {
-      return <CircularProgress />
+    } else if (status === "unavailable"){
+      return <Loading />
     } else {
       return <Container maxWidth="sm">
         <form >
-          <Box style={{ margin: "2rem 0" }}>
-            {/* TODO Ajouter les infos préremplies */}
+          <Box style={{margin: "2rem 0"}}>
             <IdentitySection
               email={email}
               firstname={firstname}
@@ -116,15 +114,14 @@ class ProfileScreen extends React.Component<{}, RegisterFormState> {
               handleChange={this.handleChange}
             />
           </Box>
-          <Box style={{ margin: "2rem 0" }}>
-            {/* TODO Ajouter les infos préremplies */}
+          <Box style={{margin: "2rem 0"}}>
             <CredentialSection
               password={password}
               confirmation={confirmation}
               handleChange={this.handleChange}
             />
           </Box>
-          <Box style={{ margin: "2rem 0" }}>
+          <Box style={{margin: "2rem 0"}}>
             <Grid container justify="flex-end">
               <Grid item xs={4}>
                 <Button

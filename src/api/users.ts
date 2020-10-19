@@ -19,7 +19,7 @@ export function login(email: string, password: string): Promise<IUser>{
       username: email,
       password: password
     },
-    { 
+    {
       withCredentials: true
     }
   ).then(res => res.data)
