@@ -1,39 +1,66 @@
-import { Container, Box } from '@material-ui/core';
+import { Container, Box, Button, Grid } from '@material-ui/core';
 import React from 'react';
+import { IFormField, IPasswordField, RegisterFormKey } from '../types';
+import { defaultPasswordFormField, defaultStringFormField } from '../utils/defaultFormField';
+import { validateConfirmationField } from '../utils/validateConfirmationField';
+import { validateEmailField } from '../utils/validateEmailField';
+import { validateNameField } from '../utils/validateNameField';
+import { validatePasswordField } from '../utils/validatePasswordField';
 import CredentialSection from './CredentialSection';
 import IdentitySection from './IdentitySection';
 
 interface RegisterFormState{
-  email: string;
-  firstname: string;
-  lastname: string;
-  password: string;
-  confirmation: string;
+  email: IFormField<string>;
+  firstname: IFormField<string>;
+  lastname: IFormField<string>;
+  password: IPasswordField;
+  confirmation: IFormField<string>;
 }
+
 class RegisterForm extends React.Component<{}, RegisterFormState> {
   constructor(props: {}){
     super(props);
     this.state = {
-      email: "",
-      firstname: "",
-      lastname: "",
-      password: "",
-      confirmation: ""
-
+      email: defaultStringFormField(),
+      firstname: defaultStringFormField(),
+      lastname: defaultStringFormField(),
+      password: defaultPasswordFormField(),
+      confirmation: defaultStringFormField()
     }
   }
 
-  handleChange = (field: string, newValue: string) => {
-    this.setState({
+  handleChange = (field: RegisterFormKey, newValue: string) => {
+    const newState = {
       ...this.state,
-      [field]: newValue
-    })
+      [field]: {
+        ...this.state[field],
+        value: newValue,
+      }
+    };
+    if (field === 'email') {
+      const { email } = newState;
+      validateEmailField(email);
+    } else if (['firstname', 'lastname'].includes(field)) {
+      const formField = newState[field];
+      validateNameField(formField);
+    } else if (field === 'password') {
+      const { password } = newState;
+      validatePasswordField(password);
+    }
+    if (['password', 'confirmation'].includes(field)) {
+      const { password, confirmation } = newState;
+      validateConfirmationField(confirmation, password);
+    }
+    this.setState(newState);
   }
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //register(...this.state).then((user) => alert(user.firstname));
+    const { email, firstname, lastname, password, confirmation } = this.state
+    if(email.isValid && firstname.isValid && lastname.isValid && password.isValid && confirmation.isValid){
+      //register(...this.state).then((user) => alert(user.firstname));
+    }
   }
 
 
@@ -50,13 +77,26 @@ class RegisterForm extends React.Component<{}, RegisterFormState> {
               handleChange={this.handleChange}
             />
           </Box>
-          {/* <Box style={{margin: "2rem 0"}}>
+          <Box style={{margin: "2rem 0"}}>
             <CredentialSection
               password={password}
               confirmation={confirmation}
               handleChange={this.handleChange}
             />
-          </Box> */}
+          </Box>
+          <Box style={{margin: "2rem 0"}}>
+            <Grid container justify="flex-end">
+              <Grid item xs={4}>
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                >
+                  Register
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
         </form>
       </Container>
     )
