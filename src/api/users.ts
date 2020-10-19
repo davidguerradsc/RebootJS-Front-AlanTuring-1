@@ -25,7 +25,19 @@ export function login(email: string, password: string): Promise<IUser>{
   ).then(res => res.data)
 }
 
+export function register(email: string, firstname: string, lastname: string, password: string): Promise<IUser>{
+  return axios.post(
+    'http://localhost:3000/api/users/',
+    { email, firstname, lastname, password },
+    {
+      withCredentials: true
+    }
+  ).then(res => res.data)
+}
+
 export default {
   getUsers,
-  login
+  login,
+  register,
+  getConnectedUser
 }

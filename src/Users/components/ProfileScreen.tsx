@@ -9,8 +9,8 @@ import { validateConfirmationField } from '../../Login/utils/validateConfirmatio
 import { validateEmailField } from '../../Login/utils/validateEmailField';
 import { validateNameField } from '../../Login/utils/validateNameField';
 import { validatePasswordField } from '../../Login/utils/validatePasswordField';
-import Alert from '@material-ui/lab/Alert';
 import { Loading } from '../../Layout/Loading';
+import { ErrorScreen } from '../../Layout/ErrorScreen';
 
 interface RegisterFormState{
   status: 'error' | 'success' | 'unavailable'
@@ -100,7 +100,7 @@ class ProfileScreen extends React.Component<{}, RegisterFormState> {
   render(){
     const { email, firstname, lastname, password, confirmation, status } = this.state;
     if(status === "error") {
-      return <Alert severity="error">This is an error alert — check it out!</Alert>
+      return <ErrorScreen errorMessage='Sorry, you need to be connected to access this page' />
     } else if (status === "unavailable"){
       return <Loading />
     } else {
