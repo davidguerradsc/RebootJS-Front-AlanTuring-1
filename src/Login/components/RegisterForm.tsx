@@ -84,8 +84,6 @@ class RegisterForm extends React.Component<{}, RegisterFormState> {
               handleChange={this.handleChange}
             />
           </Box>
-<<<<<<< HEAD
-=======
           <Box style={{margin: "2rem 0"}}>
             <Grid container justify="flex-end">
               <Grid item xs={4}>
@@ -99,7 +97,6 @@ class RegisterForm extends React.Component<{}, RegisterFormState> {
               </Grid>
             </Grid>
           </Box>
->>>>>>> upstream/master
         </form>
       </Container>
     )
