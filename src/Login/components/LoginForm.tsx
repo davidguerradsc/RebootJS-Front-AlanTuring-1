@@ -1,6 +1,7 @@
 import { Box, Button, Container, Grid, TextField } from '@material-ui/core';
 import React from 'react';
 import { login } from '../../api/users';
+import history from '../../history';
 
 interface LoginFormState {
   email: string;
@@ -25,7 +26,8 @@ class LoginForm extends React.Component<{}, LoginFormState> {
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    login(this.state.email, this.state.password).then((user) => alert(user.firstname));
+    login(this.state.email, this.state.password)
+      .then(_user => history.push('/profile'));
   }
 
   render(){
