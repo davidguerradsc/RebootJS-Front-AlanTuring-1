@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import { createStyles, TextField, Theme, Typography, withStyles } from '@material-ui/core';
 import React, { Fragment } from 'react';
 import { IFormField, IPasswordField, RegisterFormKey } from '../types';
 
@@ -6,13 +6,21 @@ interface CredentialSectionProps {
   password: IPasswordField;
   confirmation: IFormField<string>;
   handleChange: (field: RegisterFormKey, value: string) => void;
+  classes: any;
 }
+
+const style = (theme: Theme) => {
+  return createStyles({
+    newColor: { color: theme.palette.primary.main }
+  });
+};
 
 class CredentialSection extends React.Component<CredentialSectionProps> {
   render(){
     const { password, confirmation } = this.props;
     return (
       <Fragment>
+        <Typography className={this.props.classes.newColor}>Coucou</Typography>
         <TextField
           required
           label="Password"
@@ -39,4 +47,4 @@ class CredentialSection extends React.Component<CredentialSectionProps> {
   }
 }
 
-export default CredentialSection;
+export default withStyles(style)(CredentialSection);
