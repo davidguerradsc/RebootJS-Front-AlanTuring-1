@@ -3,8 +3,9 @@ import { Forum } from '@material-ui/icons';
 import React from 'react';
 import { ContactListButton } from './ContactListButton';
 import { ProfileButton } from './ProfileButton';
+import { DrawerContentString } from './types';
 
-function AppMenu({ toggleDrawer }: {toggleDrawer: () => void}){
+function AppMenu({ toggleDrawer }: {toggleDrawer: (content: DrawerContentString) => void}){
     return (
       <AppBar position="static" style={{ height: '10vh' }}>
         <Grid container justify="space-between" alignItems="center" style={{ height: '100%' }}>

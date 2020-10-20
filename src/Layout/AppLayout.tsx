@@ -3,9 +3,11 @@ import React, { Fragment } from 'react';
 import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
 import AppMenu from './AppMenu';
+import { DrawerContentString } from './types';
 
 interface AppLayoutState {
   drawerOpened: boolean;
+  drawerContent?: DrawerContentString;
 }
 
 interface AppLayoutProps {
@@ -34,7 +36,7 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
   constructor(props: AppLayoutProps){
     super(props);
     this.state = {
-      drawerOpened: false
+      drawerOpened: false,
     }
   }
 
@@ -44,9 +46,10 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     })
   }
 
-  toggleDrawer = () => {
+  toggleDrawer = (content: DrawerContentString) => {
     this.setState({
-      drawerOpened: !this.state.drawerOpened
+      drawerOpened: !this.state.drawerOpened,
+      drawerContent: !this.state.drawerOpened ? content : undefined
     })
   }
 
@@ -64,6 +67,7 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
         <AppDrawer
           open={this.state.drawerOpened}
           closeDrawer={this.closeDrawer}
+          content={this.state.drawerContent}
         />
       </Fragment>
     )
