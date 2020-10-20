@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import ChatScreen from '../../Chat/components/ChatScreen';
 import LoginScreen from '../../Login/components/LoginScreen';
 import TodoList from '../../TodoList/components/TodoList';
 import ProfileScreen from '../../Users/components/ProfileScreen';
@@ -13,6 +14,7 @@ class AppContent extends React.Component {
         <Route path="/login" component={LoginScreen} />
         <Route path="/users" component={UsersList} />
         <Route path="/profile" component={ProfileScreen} />
+        <Route path="/conversation" component={ChatScreen} />
         <Route exact path="/" component={TodoList} />
         <Route><ErrorScreen errorMessage='Oops ! It seems like we did not find this page!'/></Route>
       </Switch>
