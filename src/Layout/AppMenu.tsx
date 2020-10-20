@@ -28,7 +28,6 @@ class AppMenu extends React.Component {
         </Grid>
       </AppBar>
     )
-
 }
 
 export default AppMenu;

@@ -60,8 +60,6 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
         <div className={contentClasses}>
 
           <AppMenu toggleDrawer={this.toggleDrawer}/>
-=======
-        
           <AppContent />
         </div>
         <AppDrawer
