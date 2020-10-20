@@ -1,9 +1,9 @@
 import { makeStyles, Theme, createStyles, Drawer, Divider, IconButton } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
 import React from 'react';
-import UsersList from '../Users/components/UsersList';
+import UsersList from '../../Users/components/UsersList';
 import { Alert } from './Alert';
-import { DrawerContentString } from './types';
+import { DrawerContentString } from '../types';
 
 interface DrawerProps {
   open: boolean,

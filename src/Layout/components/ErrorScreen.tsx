@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid';
-import errorSvg from '../error.svg';
+import errorSvg from '../../error.svg';
 import React from 'react';
 import Alert from '@material-ui/lab/Alert';
 

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
 import AppMenu from './AppMenu';
-import { DrawerContentString } from './types';
+import { DrawerContentString } from '../types';
 
 interface AppLayoutState {
   drawerOpened: boolean;

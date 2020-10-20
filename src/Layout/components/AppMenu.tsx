@@ -3,7 +3,7 @@ import { Forum } from '@material-ui/icons';
 import React from 'react';
 import { ContactListButton } from './ContactListButton';
 import { ProfileButton } from './ProfileButton';
-import { DrawerContentString } from './types';
+import { DrawerContentString } from '../types';
 
 function AppMenu({ toggleDrawer }: {toggleDrawer: (content: DrawerContentString) => void}){
     return (
