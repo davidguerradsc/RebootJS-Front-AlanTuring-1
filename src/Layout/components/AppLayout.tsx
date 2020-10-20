@@ -46,14 +46,13 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     })
   }
 
-  toggleDrawer = (content: DrawerContentString) => {
+  toggleDrawer = () => {
     this.setState({
-      drawerOpened: !this.state.drawerOpened,
-      drawerContent: !this.state.drawerOpened ? content : undefined
+      drawerOpened: !this.state.drawerOpened
     })
   }
 
-  render() {
+  render(){
     const contentClasses = [
       this.props.classes.content,
       this.state.drawerOpened && this.props.classes.contentShift
@@ -61,7 +60,7 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     return (
       <Fragment>
         <div className={contentClasses}>
-          <AppMenu toggleDrawer={this.toggleDrawer} />
+          <AppMenu toggleDrawer={this.toggleDrawer}/>
           <AppContent />
         </div>
         <AppDrawer

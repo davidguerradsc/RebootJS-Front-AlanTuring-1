@@ -1,4 +1,4 @@
-import { makeStyles, Theme, createStyles, Drawer, Divider, IconButton } from '@material-ui/core';
+import { makeStyles, Theme, createStyles, Box, Drawer, Divider, IconButton } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
 import React from 'react';
 import UsersList from '../../Users/components/UsersList';
@@ -45,14 +45,16 @@ function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
       classes={{
         paper: classes.paper,
       }}
-    >
-      <div className={classes.drawerHeader}>
-        <IconButton onClick={closeDrawer}>
-          <ChevronLeft />
-        </IconButton>
-      </div>
-      <Divider />
-      {content === "users" ? <UsersList /> : <Alert status='error' error="Drawer content invalid" />}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={closeDrawer}>
+            <ChevronLeft />
+          </IconButton>
+        </div>
+        <Divider />
+        <Box>
+          <h1>Coucou Toto</h1>
+        </Box>
     </Drawer>
   )
 }
