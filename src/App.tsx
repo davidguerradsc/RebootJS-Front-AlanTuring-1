@@ -2,7 +2,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import React from 'react';
 import { Router } from 'react-router-dom';
 import './App.css';
-import AppLayout from './Layout/components/AppLayout';
+import AppLayout from './Layout/AppLayout';
 import history from './history';
 import { blue, red } from '@material-ui/core/colors';
 

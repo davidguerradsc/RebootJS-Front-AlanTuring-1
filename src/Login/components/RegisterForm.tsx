@@ -1,7 +1,7 @@
 import { Container, Box, Button, Grid } from '@material-ui/core';
 import React from 'react';
 import { register } from '../../api/users';
-import { Alert } from '../../Layout/components/Alert';
+import { Alert } from '../../Layout/Alert';
 import { IFormField, IPasswordField, RegisterFormKey } from '../types';
 import { defaultPasswordFormField, defaultStringFormField } from '../utils/defaultFormField';
 import { validateConfirmationField } from '../utils/validateConfirmationField';

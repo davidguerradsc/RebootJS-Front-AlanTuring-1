@@ -1,14 +1,14 @@
+<<<<<<< HEAD:src/Layout/components/AppDrawer.tsx
 import { makeStyles, Theme, createStyles, Box, Drawer, Divider, IconButton } from '@material-ui/core';
 import { ChevronLeft } from '@material-ui/icons';
+=======
+import { makeStyles, Theme, createStyles, Box, Drawer } from '@material-ui/core';
+>>>>>>> parent of c1d9f0f... add Drawer:src/Layout/AppDrawer.tsx
 import React from 'react';
-import UsersList from '../../Users/components/UsersList';
-import { Alert } from './Alert';
-import { DrawerContentString } from '../types';
 
 interface DrawerProps {
   open: boolean,
   closeDrawer: () => void;
-  content?: DrawerContentString;
 }
 
 export const drawerWidth = 500;
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
+function AppDrawer({ open, closeDrawer }: DrawerProps){
   const classes = useStyles();
 
   return (
@@ -46,6 +46,7 @@ function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
         paper: classes.paper,
       }}
       >
+<<<<<<< HEAD:src/Layout/components/AppDrawer.tsx
         <div className={classes.drawerHeader}>
           <IconButton onClick={closeDrawer}>
             <ChevronLeft />
@@ -55,6 +56,11 @@ function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
         <Box>
           <h1>Coucou Toto</h1>
         </Box>
+=======
+      <Box>
+        <h1>Coucou Toto</h1>
+      </Box>
+>>>>>>> parent of c1d9f0f... add Drawer:src/Layout/AppDrawer.tsx
     </Drawer>
   )
 }

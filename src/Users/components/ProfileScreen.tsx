@@ -9,8 +9,8 @@ import { validateConfirmationField } from '../../Login/utils/validateConfirmatio
 import { validateEmailField } from '../../Login/utils/validateEmailField';
 import { validateNameField } from '../../Login/utils/validateNameField';
 import { validatePasswordField } from '../../Login/utils/validatePasswordField';
-import { Loading } from '../../Layout/components/Loading';
-import { ErrorScreen } from '../../Layout/components/ErrorScreen';
+import { Loading } from '../../Layout/Loading';
+import { ErrorScreen } from '../../Layout/ErrorScreen';
 
 interface RegisterFormState{
   status: 'error' | 'success' | 'unavailable'

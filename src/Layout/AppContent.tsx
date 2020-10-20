@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LoginScreen from '../../Login/components/LoginScreen';
-import TodoList from '../../TodoList/components/TodoList';
-import ProfileScreen from '../../Users/components/ProfileScreen';
-import UsersList from '../../Users/components/UsersList';
+import LoginScreen from '../Login/components/LoginScreen';
+import TodoList from '../TodoList/components/TodoList';
+import ProfileScreen from '../Users/components/ProfileScreen';
+import UsersList from '../Users/components/UsersList';
 import { ErrorScreen } from './ErrorScreen';
 
 class AppContent extends React.Component {
