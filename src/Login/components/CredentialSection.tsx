@@ -34,7 +34,6 @@ class CredentialSection extends React.Component<CredentialSectionProps> {
             value={password.value}
             onChange={(e) => this.props.handleChange("password", e.target.value)}
             {...(!password.isValid ? {error: true, helperText: password.error} : {})}
-
             />
           <TextField
             required

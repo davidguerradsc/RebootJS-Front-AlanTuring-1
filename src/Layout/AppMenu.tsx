@@ -4,8 +4,7 @@ import React from 'react';
 import { ContactListButton } from './ContactListButton';
 import { ProfileButton } from './ProfileButton';
 
-class AppMenu extends React.Component {
-  render(){
+function AppMenu({ toggleDrawer }: {toggleDrawer: () => void}){
     return (
       <AppBar position="static" style={{ height: '10vh' }}>
         <Grid container justify="space-between" alignItems="center" style={{ height: '100%' }}>
@@ -17,14 +16,13 @@ class AppMenu extends React.Component {
           </Grid>
           <Grid item>
             <Toolbar>
-              <ContactListButton />
+              <ContactListButton toggleDrawer={toggleDrawer}/>
               <ProfileButton />
             </Toolbar>
           </Grid>
         </Grid>
       </AppBar>
     )
-  }
 }
 
 export default AppMenu;

@@ -1,4 +1,5 @@
-import { makeStyles, Theme, createStyles, Box, Drawer } from '@material-ui/core';
+import { makeStyles, Theme, createStyles, Box, Drawer, Divider, IconButton } from '@material-ui/core';
+import { ChevronLeft } from '@material-ui/icons';
 import React from 'react';
 
 interface DrawerProps {
@@ -41,9 +42,15 @@ function AppDrawer({ open, closeDrawer }: DrawerProps){
         paper: classes.paper,
       }}
       >
-      <Box>
-        <h1>Coucou Toto</h1>
-      </Box>
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={closeDrawer}>
+            <ChevronLeft />
+          </IconButton>
+        </div>
+        <Divider />
+        <Box>
+          <h1>Coucou Toto</h1>
+        </Box>
     </Drawer>
   )
 }

@@ -1,14 +1,11 @@
 import IconButton from '@material-ui/core/IconButton';
 import Contacts from '@material-ui/icons/Contacts';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export function ContactListButton() {
+export function ContactListButton({ toggleDrawer }: {toggleDrawer: () => void}) {
   return (
-    <Link to="/users">
-      <IconButton aria-label="contacts">
-        <Contacts fontSize="large" />
-      </IconButton>
-    </Link>
+    <IconButton aria-label="contacts" onClick={toggleDrawer}>
+      <Contacts fontSize="large" />
+    </IconButton>
   );
 }
