@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { getConversations } from '../../api/messages';
+import { Loading } from '../../Layout/components/Loading';
 import { IConversation } from '../types';
+import { AttendeesList } from './AttendeesList';
+import ChatInput from './ChatInput';
+import { ChatMessages } from './ChatMessages';
 
 interface ChatScreenState {
-  conversation: IConversation;
+  conversation?: IConversation;
 }
 
 class ChatScreen extends React.Component<{}, ChatScreenState> {
+  constructor(props: {}){
+    super(props);
+    this.state = {}
+  }
+
   componentDidMount(){
     getConversations().then(conversations => {
       this.setState({
@@ -14,10 +23,18 @@ class ChatScreen extends React.Component<{}, ChatScreenState> {
       })
     })
   }
-  
+
   render(){
+    const { conversation } = this.state;
+    if(!conversation) return <Loading />
+
     return (
-      <h1>Chat</h1>
+      <Fragment>
+        <h1>Chat</h1>
+        <ChatMessages messages={conversation.messages} />
+        <ChatInput />
+        <AttendeesList users={conversation.targets}/>
+      </Fragment>
     )
   }
 }
