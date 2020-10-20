@@ -11,12 +11,12 @@ interface ChatScreenState {
 }
 
 class ChatScreen extends React.Component<{}, ChatScreenState> {
-  constructor(props: {}) {
+  constructor(props: {}){
     super(props);
     this.state = {}
   }
 
-  componentDidMount() {
+  componentDidMount(){
     getConversations().then(conversations => {
       this.setState({
         conversation: conversations[0]
@@ -24,16 +24,16 @@ class ChatScreen extends React.Component<{}, ChatScreenState> {
     })
   }
 
-  render() {
+  render(){
     const { conversation } = this.state;
-    if (!conversation) return <Loading />
+    if(!conversation) return <Loading />
 
     return (
       <Fragment>
         <h1>Chat</h1>
         <ChatMessages messages={conversation.messages} />
         <ChatInput />
-        <AttendeesList users={conversation.targets} />
+        <AttendeesList users={conversation.targets}/>
       </Fragment>
     )
   }
