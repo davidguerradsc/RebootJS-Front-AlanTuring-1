@@ -7,14 +7,14 @@ import UsersList from '../../Users/components/UsersList';
 import { ErrorScreen } from './ErrorScreen';
 
 class AppContent extends React.Component {
-  render(){
+  render() {
     return (
       <Switch>
         <Route path="/login" component={LoginScreen} />
         <Route path="/users" component={UsersList} />
         <Route path="/profile" component={ProfileScreen} />
         <Route exact path="/" component={TodoList} />
-        <Route><ErrorScreen errorMessage='Oops ! It seems like we did not find this page!'/></Route>
+        <Route><ErrorScreen errorMessage='Oops ! It seems like we did not find this page!' /></Route>
       </Switch>
     )
   }

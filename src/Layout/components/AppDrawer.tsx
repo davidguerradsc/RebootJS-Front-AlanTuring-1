@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-function AppDrawer({ open, closeDrawer, content }: DrawerProps){
+function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
   const classes = useStyles();
 
   return (
@@ -45,17 +45,14 @@ function AppDrawer({ open, closeDrawer, content }: DrawerProps){
       classes={{
         paper: classes.paper,
       }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={closeDrawer}>
-            <ChevronLeft />
-          </IconButton>
-        </div>
-        <Divider />
-      <Box>
-        <h1>Coucou Toto</h1>
-      </Box>
-        {content === "users" ? <UsersList /> : <Alert status='error' error="Drawer content invalid"/>}
+    >
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={closeDrawer}>
+          <ChevronLeft />
+        </IconButton>
+      </div>
+      <Divider />
+      {content === "users" ? <UsersList /> : <Alert status='error' error="Drawer content invalid" />}
     </Drawer>
   )
 }

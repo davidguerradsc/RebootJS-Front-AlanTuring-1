@@ -2,7 +2,7 @@ import { createStyles, Theme, withStyles } from '@material-ui/core';
 import React, { Fragment } from 'react';
 import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
-import AppMenu from '../components/AppMenu';
+import AppMenu from './AppMenu';
 import { DrawerContentString } from '../types';
 
 interface AppLayoutState {
@@ -33,7 +33,7 @@ const style = (theme: Theme) => createStyles({
 });
 
 class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
-  constructor(props: AppLayoutProps){
+  constructor(props: AppLayoutProps) {
     super(props);
     this.state = {
       drawerOpened: false,
@@ -52,7 +52,8 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
       drawerContent: !this.state.drawerOpened ? content : undefined
     })
   }
-  render(){
+
+  render() {
     const contentClasses = [
       this.props.classes.content,
       this.state.drawerOpened && this.props.classes.contentShift
@@ -60,8 +61,7 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     return (
       <Fragment>
         <div className={contentClasses}>
-
-          <AppMenu toggleDrawer={this.toggleDrawer}/>
+          <AppMenu toggleDrawer={this.toggleDrawer} />
           <AppContent />
         </div>
         <AppDrawer
