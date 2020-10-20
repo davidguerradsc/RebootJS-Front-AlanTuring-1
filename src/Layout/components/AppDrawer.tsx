@@ -1,9 +1,14 @@
-import { makeStyles, Theme, createStyles, Box, Drawer } from '@material-ui/core';
+import { makeStyles, Theme, createStyles, Drawer, Divider, IconButton } from '@material-ui/core';
+import { ChevronLeft } from '@material-ui/icons';
 import React from 'react';
+import UsersList from '../../Users/components/UsersList';
+import { Alert } from './Alert';
+import { DrawerContentString } from '../types';
 
 interface DrawerProps {
   open: boolean,
   closeDrawer: () => void;
+  content?: DrawerContentString;
 }
 
 export const drawerWidth = 500;
@@ -28,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-function AppDrawer({ open, closeDrawer }: DrawerProps){
+function AppDrawer({ open, closeDrawer, content }: DrawerProps) {
   const classes = useStyles();
 
   return (
@@ -40,10 +45,14 @@ function AppDrawer({ open, closeDrawer }: DrawerProps){
       classes={{
         paper: classes.paper,
       }}
-      >
-      <Box>
-        <h1>Coucou Toto</h1>
-      </Box>
+    >
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={closeDrawer}>
+          <ChevronLeft />
+        </IconButton>
+      </div>
+      <Divider />
+      {content === "users" ? <UsersList /> : <Alert status='error' error="Drawer content invalid" />}
     </Drawer>
   )
 }

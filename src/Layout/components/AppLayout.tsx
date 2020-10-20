@@ -3,9 +3,11 @@ import React, { Fragment } from 'react';
 import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
 import AppMenu from './AppMenu';
+import { DrawerContentString } from '../types';
 
 interface AppLayoutState {
   drawerOpened: boolean;
+  drawerContent?: DrawerContentString;
 }
 
 interface AppLayoutProps {
@@ -31,10 +33,10 @@ const style = (theme: Theme) => createStyles({
 });
 
 class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
-  constructor(props: AppLayoutProps){
+  constructor(props: AppLayoutProps) {
     super(props);
     this.state = {
-      drawerOpened: false
+      drawerOpened: false,
     }
   }
 
@@ -44,7 +46,14 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     })
   }
 
-  render(){
+  toggleDrawer = (content: DrawerContentString) => {
+    this.setState({
+      drawerOpened: !this.state.drawerOpened,
+      drawerContent: !this.state.drawerOpened ? content : undefined
+    })
+  }
+
+  render() {
     const contentClasses = [
       this.props.classes.content,
       this.state.drawerOpened && this.props.classes.contentShift
@@ -52,12 +61,13 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     return (
       <Fragment>
         <div className={contentClasses}>
-          <AppMenu />
+          <AppMenu toggleDrawer={this.toggleDrawer} />
           <AppContent />
         </div>
         <AppDrawer
           open={this.state.drawerOpened}
           closeDrawer={this.closeDrawer}
+          content={this.state.drawerContent}
         />
       </Fragment>
     )
