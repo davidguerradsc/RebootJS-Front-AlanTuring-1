@@ -4,6 +4,7 @@ import React from 'react';
 import { ContactListButton } from './ContactListButton';
 import { ProfileButton } from './ProfileButton';
 import { DrawerContentString } from '../types';
+import { ConversationsButton } from './ConversationsButton';
 
 function AppMenu({ toggleDrawer }: {toggleDrawer: (content: DrawerContentString) => void}){
     return (
@@ -17,6 +18,7 @@ function AppMenu({ toggleDrawer }: {toggleDrawer: (content: DrawerContentString)
           </Grid>
           <Grid item>
             <Toolbar>
+              <ConversationsButton toggleDrawer={toggleDrawer}/>
               <ContactListButton toggleDrawer={toggleDrawer}/>
               <ProfileButton />
             </Toolbar>

@@ -4,6 +4,7 @@ import React from 'react';
 import UsersList from '../../Users/components/UsersList';
 import { Alert } from './Alert';
 import { DrawerContentString } from '../types';
+import ConversationsList from '../../Chat/components/ConversationsList';
 
 interface DrawerProps {
   open: boolean,
@@ -36,6 +37,14 @@ const useStyles = makeStyles((theme: Theme) =>
 function AppDrawer({ open, closeDrawer, content }: DrawerProps){
   const classes = useStyles();
 
+  let contentComponent: any;
+  if(content === "users"){
+    contentComponent = <UsersList />
+  } else if (content === "conversations") {
+    contentComponent = <ConversationsList />
+  } else {
+    contentComponent = <Alert status='error' error="Drawer content invalid"/>
+  }
   return (
     <Drawer
       variant="persistent"
@@ -52,7 +61,7 @@ function AppDrawer({ open, closeDrawer, content }: DrawerProps){
           </IconButton>
         </div>
         <Divider />
-        {content === "users" ? <UsersList /> : <Alert status='error' error="Drawer content invalid"/>}
+        {contentComponent}
     </Drawer>
   )
 }
