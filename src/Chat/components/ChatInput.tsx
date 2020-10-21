@@ -5,7 +5,7 @@ class ChatInput extends React.Component {
   render(){
     return (
       <form>
-        <Grid container spacing={1} alignItems="center" justify="space-between">
+        <Grid container spacing={1} alignItems="center" justify="space-around">
           <Grid item xs={9}>
             <TextField
               fullWidth={true}

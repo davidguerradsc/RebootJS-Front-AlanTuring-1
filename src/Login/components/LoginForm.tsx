@@ -37,10 +37,10 @@ class LoginForm extends React.Component<{}, LoginFormState> {
           <Box style={{margin: "2rem 0"}}>
             <TextField
               required
-              label="Email"
+              label="Emaile"
               variant="outlined"
               fullWidth={true}
-              style={{paddingBottom: "1rem 0"}}
+              style={{paddingBottom: "1rem 0", margin:'1rem 0'}}
               value={this.state.email}
               onChange={(e) => this.handleChange("email", e.target.value)}
               />

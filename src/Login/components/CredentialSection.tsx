@@ -25,7 +25,7 @@ class CredentialSection extends React.Component<CredentialSectionProps> {
           Your credentials:
         </FormLabel>
         <FormGroup>
-          <TextField
+          <TextField style={{ marginBottom: '1rem' }}
             required
             label="Password"
             variant="outlined"
@@ -35,7 +35,7 @@ class CredentialSection extends React.Component<CredentialSectionProps> {
             onChange={(e) => this.props.handleChange("password", e.target.value)}
             {...(!password.isValid ? {error: true, helperText: password.error} : {})}
             />
-          <TextField
+          <TextField style={{ marginBottom: '1rem' }}
             required
             label="Confirmation"
             variant="outlined"

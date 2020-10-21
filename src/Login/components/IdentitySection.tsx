@@ -18,7 +18,7 @@ class IdentitySection extends React.Component<IdentitySectionProps> {
           Your identity:
         </FormLabel>
         <FormGroup>
-          <TextField
+          <TextField style={{ marginBottom: '1rem' }}
             required
             label="Email"
             variant="outlined"
@@ -27,7 +27,7 @@ class IdentitySection extends React.Component<IdentitySectionProps> {
             onChange={(e) => this.props.handleChange("email", e.target.value)}
             {...(!email.isValid ? {error: true, helperText: email.error} : {})}
             />
-          <TextField
+          <TextField style={{ marginBottom: '1rem' }}
             required
             label="Firstname"
             variant="outlined"
@@ -36,7 +36,7 @@ class IdentitySection extends React.Component<IdentitySectionProps> {
             onChange={(e) => this.props.handleChange("firstname", e.target.value)}
             {...(!firstname.isValid ? {error: true, helperText: firstname.error} : {})}
             />
-          <TextField
+          <TextField style={{ marginBottom: '1rem' }}
             required
             label="Lastname"
             variant="outlined"
