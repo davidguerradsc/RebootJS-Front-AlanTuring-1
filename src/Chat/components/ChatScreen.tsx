@@ -18,14 +18,14 @@ interface ChatScreenState {
 }
 
 class ChatScreen extends React.Component<ChatScreenProps, ChatScreenState> {
-  constructor(props: ChatScreenProps) {
+  constructor(props: ChatScreenProps){
     super(props);
     this.state = {}
   }
 
   componentDidMount() {
     getConversations().then(conversations => {
-      const conversationID = this.props.match.params.conversationID
+      const conversationID = this.props.match.params.conversationID;
       this.setState({
         conversation: conversations.find(conv => conv._id === conversationID)
       })
