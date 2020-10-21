@@ -16,12 +16,11 @@ class UsersList extends React.Component<{}, UsersListState>{
     }
   }
 
-  componentDidMount(){
-    getUsers().then(users =>{
-      this.setState({
-        users: users
-      })
-    })
+  async componentDidMount(){
+    const users = await getUsers()
+    this.setState({
+      users: users
+    });
   }
 
   render(){
