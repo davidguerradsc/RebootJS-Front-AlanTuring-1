@@ -24,12 +24,6 @@ function AppMenu({ toggleDrawer }: {toggleDrawer: (content: DrawerContentString)
             </Toolbar>
           </Grid>
         </Grid>
-        <Grid item>
-          <Toolbar>
-            <ContactListButton toggleDrawer={toggleDrawer} />
-            <ProfileButton />
-          </Toolbar>
-        </Grid>
     </AppBar>
   )
 }
