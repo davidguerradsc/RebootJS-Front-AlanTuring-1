@@ -14,7 +14,7 @@ class AppContent extends React.Component {
         <Route path="/login" component={LoginScreen} />
         <Route path="/users" component={UsersList} />
         <Route path="/profile" component={ProfileScreen} />
-        <Route path="/conversation" component={ChatScreen} />
+        <Route path="/conversation/:conversationID" component={ChatScreen} />
         <Route exact path="/" component={TodoList} />
         <Route><ErrorScreen errorMessage='Oops ! It seems like we did not find this page!'/></Route>
       </Switch>

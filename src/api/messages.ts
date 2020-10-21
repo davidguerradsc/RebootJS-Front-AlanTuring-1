@@ -27,5 +27,26 @@ export function getConversations():Promise<IConversation[]>{
       targets: ['5f8eb08e8bf2813b9e235976'],
       content: 'Oui et toi ?',
     }]
+  }, {
+    _id: '12345',
+    targets: ['5f8eb08e8bf2813b9e235976', '5f8fe4d6e00960960abadf33'],
+    updatedAt: new Date(),
+    unseenMessages: 0,
+    messages: [{
+      _id: 'abcde',
+      conversationId: '12345',
+      createdAt: new Date(),
+      emitter: '5f8eb08e8bf2813b9e235976',
+      targets: ['5f8fe4d6e00960960abadf33'],
+      content: 'Coucou',
+    },
+    {
+      _id: 'abcdef',
+      conversationId: '12345',
+      createdAt: new Date(),
+      emitter: '5f8fe4d6e00960960abadf33',
+      targets: ['5f8eb08e8bf2813b9e235976'],
+      content: 'Hey ça va ?',
+    }]
   }])
 }
