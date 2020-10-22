@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { getConversations } from '../../api/messages';
+import { getConnectedUser } from '../../api/users';
 import { Loading } from '../../Layout/components/Loading';
 import { IConversation } from '../types';
 import { AttendeesList } from './AttendeesList';
@@ -18,7 +19,7 @@ interface ChatScreenState {
 }
 
 class ChatScreen extends React.Component<ChatScreenProps, ChatScreenState> {
-  constructor(props: ChatScreenProps){
+  constructor(props: ChatScreenProps) {
     super(props);
     this.state = {}
   }
@@ -30,6 +31,11 @@ class ChatScreen extends React.Component<ChatScreenProps, ChatScreenState> {
         conversation: conversations.find(conv => conv._id === conversationID)
       })
     })
+  }
+
+  sendNewMessage = (message: string) => {
+    const id = this.state.conversation?._id
+    //const targets = this.state.conversation?.targets.filter(target => target !== connectedUser._id)
   }
 
   render() {
