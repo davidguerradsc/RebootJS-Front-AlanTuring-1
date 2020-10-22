@@ -19,7 +19,6 @@ export async function getConversations(): Promise<IConversation[]> {
       // Regarder le conversationId
       // Mettre le message au bon endroit dans l'accumulateur
       const convId = message.conversationId;
-        acc[convId] = [ message ]
       if (acc[convId] === undefined) {
         acc[convId] = [message]
       } else {
