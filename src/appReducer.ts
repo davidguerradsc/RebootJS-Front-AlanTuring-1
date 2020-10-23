@@ -8,17 +8,13 @@ export const appReducer = combineReducers({
 export type IAppState = ReturnType<typeof appReducer>
 
 /*
-- fetch vers l'api DONE :)
-- creer un reducer pour users DONE :)
-- essayer de passer par les valeurs par défaut pour remplir le state avec la liste des users, le user connecté
+- Créer une fonction qui appelle les users de façon synchrone ("pre-action")
+- Créer une fonction qui récupère la liste des users ("action")
+- reducers reçoit les infos des users fetché (résultat de la préaction "cas dans le reducer")
 
+- Composants
+  - AppLayout => Dispatch la préaction pour fetch les users
+  - UsersList => Connecter au store pour accéder à la liste
 
-- Actions:
-  Charger les users et les mettres dans le store
-  Charger le user connecté et qui le met dans le store
-
-
-- ...
-
-
+- Beaucoup de nouveaux types
 */
