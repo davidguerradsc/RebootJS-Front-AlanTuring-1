@@ -6,6 +6,7 @@ import AppMenu from './AppMenu';
 import { DrawerContentString } from '../types';
 import { connect } from 'react-redux';
 import { makeFetchConnectedUser } from '../../Users/actions/makeFetchConnectedUser';
+import { makeFetchUsers } from '../../Users/actions/makeFetchUsers';
 
 interface AppLayoutState {
   drawerOpened: boolean;
@@ -15,6 +16,7 @@ interface AppLayoutState {
 interface AppLayoutProps {
   classes: any;
   getConnectedUser: () => void;
+  getUsers: () => void;
 }
 
 const style = (theme: Theme) => createStyles({
@@ -46,6 +48,7 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
   // TMP
   componentDidMount(){
     this.props.getConnectedUser();
+    this.props.getUsers();
   }
 
   closeDrawer = () => {
@@ -84,7 +87,8 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
 
 // TODO ThunkAction<void, IAppState, unknown, Action<string>>
 const mapDispatchToProps = (dispatch: any) => ({
-  getConnectedUser: () => { dispatch(makeFetchConnectedUser())}
+  getConnectedUser: () => { dispatch(makeFetchConnectedUser())},
+  getUsers: () => { dispatch(makeFetchUsers())}
 })
 
 export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));
