@@ -1,37 +1,27 @@
 import { List } from '@material-ui/core';
+import { connect } from 'react-redux';
 import React from 'react';
-import { getUsers } from '../../api/users';
+import { IAppState } from '../../appReducer';
 import { IUser } from '../types';
 import UsersListItem from './UsersListItem';
 
-interface UsersListState {
+interface UsersListProps {
   users: IUser[];
 }
 
-class UsersList extends React.Component<{}, UsersListState>{
-  constructor(props: {}){
-    super(props);
-    this.state = {
-      users: []
-    }
-  }
-
-  async componentDidMount(){
-    const users = await getUsers()
-    this.setState({
-      users: users
-    });
-  }
-
+class UsersList extends React.Component<UsersListProps>{
   render(){
-    if(this.state.users.length === 0){
+    if(this.props.users.length === 0){
       return <h1>Loading</h1>
     } else {
       return <List>
-        {this.state.users.map((user, index) => <UsersListItem key={index} user={user} />)}
+        {this.props.users.map((user, index) => <UsersListItem key={index} user={user} />)}
       </List>
     }
   }
 }
 
-export default UsersList;
+const mapStateToProps = ({users} : IAppState) => ({
+  users: users.list
+})
+export default connect(mapStateToProps)(UsersList);
