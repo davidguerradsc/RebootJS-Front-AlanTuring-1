@@ -5,6 +5,8 @@ import './App.css';
 import AppLayout from './Layout/components/AppLayout';
 import history from './history';
 import { blue, red } from '@material-ui/core/colors';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,11 +19,13 @@ const theme = createMuiTheme({
 })
 function App() {
   return (
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <AppLayout />
-      </ThemeProvider>
-    </Router>
+    <Provider store={store}>
+      <Router history={history}>
+        <ThemeProvider theme={theme}>
+          <AppLayout />
+        </ThemeProvider>
+      </Router>
+    </Provider>
   );
 }
 

@@ -4,6 +4,8 @@ import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
 import AppMenu from './AppMenu';
 import { DrawerContentString } from '../types';
+import { connect } from 'react-redux';
+import { makeFetchConnectedUser } from '../../Users/actions/makefetchConnectedUser';
 
 interface AppLayoutState {
   drawerOpened: boolean;
@@ -12,6 +14,7 @@ interface AppLayoutState {
 
 interface AppLayoutProps {
   classes: any;
+  getConnectedUser: () => void;
 }
 
 const style = (theme: Theme) => createStyles({
@@ -38,6 +41,11 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     this.state = {
       drawerOpened: false,
     }
+  }
+
+  // TMP
+  componentDidMount() {
+    this.props.getConnectedUser();
   }
 
   closeDrawer = () => {
@@ -74,4 +82,8 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
   }
 }
 
-export default withStyles(style)(AppLayout);
+const mapDispatchToProps = (dispatch: any) => ({
+  getConnectedUser: () => { dispatch(makeFetchConnectedUser()) }
+})
+
+export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));
