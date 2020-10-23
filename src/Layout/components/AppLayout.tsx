@@ -42,9 +42,9 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
       drawerOpened: false,
     }
   }
-
+  
   // TMP
-  componentDidMount() {
+  componentDidMount(){
     this.props.getConnectedUser();
   }
 
@@ -82,8 +82,9 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
   }
 }
 
+// TODO ThunkAction<void, IAppState, unknown, Action<string>>
 const mapDispatchToProps = (dispatch: any) => ({
-  getConnectedUser: () => { dispatch(makeFetchConnectedUser()) }
+  getConnectedUser: () => { dispatch(makeFetchConnectedUser())}
 })
 
 export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));

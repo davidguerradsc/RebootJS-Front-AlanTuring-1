@@ -1,7 +1,7 @@
 import { IUsersAction, IUsersState, UPDATE_CONNECTED_USER } from "./types";
 
 export function users(state: IUsersState = defaultUsersState(), action: IUsersAction): IUsersState {
-  switch (action.type) {
+  switch(action.type){
     case UPDATE_CONNECTED_USER:
       return {
         ...state,
@@ -12,7 +12,7 @@ export function users(state: IUsersState = defaultUsersState(), action: IUsersAc
   }
 }
 
-function defaultUsersState() {
+function defaultUsersState(){
   return {
     list: [],
   }
