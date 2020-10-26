@@ -7,6 +7,10 @@ import history from './history';
 import { blue, red } from '@material-ui/core/colors';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { makeInitApp } from './Layout/actions/makeInitApp';
+import { ThunkDispatch } from 'redux-thunk';
+import { IAppState } from './appReducer';
+import { Action } from 'redux';
 
 const theme = createMuiTheme({
   palette: {
@@ -16,7 +20,10 @@ const theme = createMuiTheme({
     },
     error: red,
   },
-})
+});
+
+(store.dispatch as ThunkDispatch<IAppState, void, Action>)(makeInitApp());
+
 function App() {
   return (
     <Provider store={store}>

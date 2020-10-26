@@ -30,7 +30,7 @@ function UserDetails({user} : UserDetailsProps){
 
 const mapStateToProps = (store: IAppState, props: UserDetailsPropsGiven) => {
   return {
-    user: store.users.list.find(user => user._id === props.id) || { _id: "", firstname: 'Unknown', lastname: 'User', email: "usernotfound" }
+    user: store.users.list.find(user => user._id === props.id) || { _id: "", firstname: 'Unknown', lastname: 'User', email: "usernotfound", conversationsSeen: {}}
   }
 }
 

@@ -4,23 +4,14 @@ import AppContent from './AppContent';
 import AppDrawer, { drawerWidth } from './AppDrawer';
 import AppMenu from './AppMenu';
 import { DrawerContentString } from '../types';
-import { connect } from 'react-redux';
-import { makeFetchConnectedUser } from '../../Users/actions/makeFetchConnectedUser';
-import { makeFetchUsers } from '../../Users/actions/makeFetchUsers';
-import { makeFetchConversations } from '../../Chat/actions/makeFetchConversations';
-import { clearInterval } from 'timers';
 
 interface AppLayoutState {
   drawerOpened: boolean;
   drawerContent?: DrawerContentString;
-  timer?: NodeJS.Timeout;
 }
 
 interface AppLayoutProps {
   classes: any;
-  getConnectedUser: () => void;
-  getUsers: () => void;
-  getConversations: () => void;
 }
 
 const style = (theme: Theme) => createStyles({
@@ -47,21 +38,6 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     this.state = {
       drawerOpened: false,
     }
-  }
-
-  // TMP
-  componentDidMount(){
-    this.props.getConnectedUser();
-    this.props.getUsers();
-    this.props.getConversations();
-
-    this.setState({
-      timer: setInterval(() => { this.props.getConversations() }, 3000)
-    });
-  }
-
-  componentWillUnmount(){
-    if(this.state.timer) { clearInterval(this.state.timer) };
   }
 
   closeDrawer = () => {
@@ -98,11 +74,4 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
   }
 }
 
-// TODO ThunkAction<void, IAppState, unknown, Action<string>>
-const mapDispatchToProps = (dispatch: any) => ({
-  getConnectedUser: () => { dispatch(makeFetchConnectedUser())},
-  getUsers: () => { dispatch(makeFetchUsers())},
-  getConversations: () => { dispatch(makeFetchConversations())}
-})
-
-export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));
+export default withStyles(style)(AppLayout);
