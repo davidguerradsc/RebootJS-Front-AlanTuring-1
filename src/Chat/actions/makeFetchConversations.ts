@@ -1,5 +1,5 @@
 import { getConversations } from "../../api/messages"
-import { updateConversationList } from "./updateConversationList"
+import { updateConversationList } from "./UpdateConversationList"
 
 export function makeFetchConversations(){
   return async (dispatch: any) => {
