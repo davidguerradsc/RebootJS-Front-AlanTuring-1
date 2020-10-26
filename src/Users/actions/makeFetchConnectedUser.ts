@@ -3,7 +3,7 @@ import { updateConnectedUser } from "./updateConnectedUser";
 
 export function makeFetchConnectedUser() {
   return async (dispatch: any) => {
-    try {
+    try{
       const connectedUser = await getConnectedUser();
       dispatch(updateConnectedUser(connectedUser))
     } catch (err) {
