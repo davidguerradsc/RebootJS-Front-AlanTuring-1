@@ -56,27 +56,28 @@ export async function getConversations(): Promise<IConversation[]> {
   // 2eme étape : Créer les types depuis la liste de messages, restructure
   // { 123: [message, message2], 12345: [xxx], 1234: [xxx] } => [ conversation1, conversation2 ]
 
-  const conversations: IConversation[] = [];
-  for (const key in batches) {
-    const value = batches[key];
-    // 123 => key
-    // [message, message2] => value
-    const targetsNonDistincts = messages.flatMap(message => [message.emitter, ...message.targets]);
-    const targets = [...new Set(targetsNonDistincts)];
-    // message : [emitter, target1, target2]
-    // message2: [emitter2, target3, target4]
-    // [[emitter, target1, target2],[emitter2, target3, target4]] => [emitter, target1, target2, emitter2, target3, target4]
-    const updatedAt = messages.sort()[0].createdAt; // TODO completer sort
-    conversations.push({
-      _id: key,
-      targets: targets,
-      updatedAt: updatedAt,
-      unseenMessages: 0,
-      messages: value
-    })
-  }
+ const conversations : IConversation[] = [];
+ for(const key in batches){
+   const value = batches[key];
+   // 123 => key
+   // [message, message2] => value
+   const targetsNonDistincts = value.flatMap(message => [message.emitter, ...message.targets]);
+   const targets = [...new Set(targetsNonDistincts)];
 
-  return conversations;
+   // message : [emitter, target1, target2]
+   // message2: [emitter2, target3, target4]
+   // [[emitter, target1, target2],[emitter2, target3, target4]] => [emitter, target1, target2, emitter2, target3, target4]
+   const updatedAt = messages.sort()[0].createdAt; // TODO completer sort
+   conversations.push({
+     _id: key,
+     targets: targets,
+     updatedAt: updatedAt,
+     unseenMessages: 0,
+     messages: value
+   })
+ }
+
+ return conversations;
 
   /*
   [{
