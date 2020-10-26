@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { makeFetchConnectedUser } from '../../Users/actions/makeFetchConnectedUser';
 import { makeFetchUsers } from '../../Users/actions/makeFetchUsers';
 import { makeFetchConversations } from '../../Chat/actions/makeFetchConversations';
-import UserDetails from '../../Users/components/UserDetails';
 
 interface AppLayoutState {
   drawerOpened: boolean;
@@ -91,9 +90,9 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
 
 // TODO ThunkAction<void, IAppState, unknown, Action<string>>
 const mapDispatchToProps = (dispatch: any) => ({
-  getConnectedUser: () => { dispatch(makeFetchConnectedUser()) },
-  getUsers: () => { dispatch(makeFetchUsers()) },
-  getConversations: () => { dispatch(makeFetchConversations()) }
+  getConnectedUser: () => { dispatch(makeFetchConnectedUser())},
+  getUsers: () => { dispatch(makeFetchUsers())},
+  getConversations: () => { dispatch(makeFetchConversations())}
 })
 
 export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));

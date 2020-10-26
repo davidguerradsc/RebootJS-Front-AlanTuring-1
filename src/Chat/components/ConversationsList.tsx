@@ -10,8 +10,8 @@ interface ConversationsListProps {
 }
 
 class ConversationsList extends React.Component<ConversationsListProps>{
-  render() {
-    if (this.props.conversations.length === 0) {
+  render(){
+    if(this.props.conversations.length === 0){
       return <h1>Loading</h1>
     } else {
       return <List>

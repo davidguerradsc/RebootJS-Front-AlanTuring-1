@@ -16,9 +16,9 @@ interface ChatScreenProps {
 }
 
 class ChatScreen extends React.Component<ChatScreenProps> {
-  render() {
+  render(){
     const { conversation } = this.props;
-    if (!conversation) return <Loading />
+    if(!conversation) return <Loading />
 
     return (
       <Fragment>
@@ -31,7 +31,7 @@ class ChatScreen extends React.Component<ChatScreenProps> {
   }
 }
 
-const mapStateToProps = ({ conversations }: IAppState, props: ChatScreenProps) => {
+const mapStateToProps = ({conversations}: IAppState, props: ChatScreenProps) => {
   const conversationID = props.match.params.conversationID;
 
   return {
