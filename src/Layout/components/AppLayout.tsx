@@ -8,10 +8,12 @@ import { connect } from 'react-redux';
 import { makeFetchConnectedUser } from '../../Users/actions/makeFetchConnectedUser';
 import { makeFetchUsers } from '../../Users/actions/makeFetchUsers';
 import { makeFetchConversations } from '../../Chat/actions/makeFetchConversations';
+import { clearInterval } from 'timers';
 
 interface AppLayoutState {
   drawerOpened: boolean;
   drawerContent?: DrawerContentString;
+  timer?: NodeJS.Timeout;
 }
 
 interface AppLayoutProps {
@@ -52,6 +54,14 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
     this.props.getConnectedUser();
     this.props.getUsers();
     this.props.getConversations();
+
+    this.setState({
+      timer: setInterval(() => { this.props.getConversations() }, 3000)
+    });
+  }
+
+  componentWillUnmount(){
+    if(this.state.timer) { clearInterval(this.state.timer) };
   }
 
   closeDrawer = () => {
