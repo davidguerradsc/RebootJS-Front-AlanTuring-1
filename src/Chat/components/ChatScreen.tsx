@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getConversations } from '../../api/messages';
+import { IAppState } from '../../appReducer';
 import { Loading } from '../../Layout/components/Loading';
 import { IConversation } from '../types';
 import { AttendeesList } from './AttendeesList';
@@ -11,29 +12,12 @@ interface ChatScreenProps {
   match: any;
   history: any;
   location: any;
-}
-
-interface ChatScreenState {
   conversation?: IConversation;
 }
 
-class ChatScreen extends React.Component<ChatScreenProps, ChatScreenState> {
-  constructor(props: ChatScreenProps){
-    super(props);
-    this.state = {}
-  }
-
-  componentDidMount(){
-    getConversations().then(conversations => {
-      const conversationID = this.props.match.params.conversationID;
-      this.setState({
-        conversation: conversations.find(conv => conv._id === conversationID)
-      })
-    })
-  }
-
+class ChatScreen extends React.Component<ChatScreenProps> {
   render(){
-    const { conversation } = this.state;
+    const { conversation } = this.props;
     if(!conversation) return <Loading />
 
     return (
@@ -47,4 +31,11 @@ class ChatScreen extends React.Component<ChatScreenProps, ChatScreenState> {
   }
 }
 
-export default withRouter(ChatScreen);
+const mapStateToProps = ({conversations}: IAppState, props: ChatScreenProps) => {
+  const conversationID = props.match.params.conversationID;
+
+  return {
+    conversation: conversations.list.find(conv => conv._id === conversationID)
+  }
+}
+export default connect(mapStateToProps)(withRouter(ChatScreen));
