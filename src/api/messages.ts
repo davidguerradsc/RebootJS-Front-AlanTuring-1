@@ -61,26 +61,18 @@ export async function getConversations(): Promise<IConversation[]> {
     const value = batches[key];
     // 123 => key
     // [message, message2] => value
-    const targetsNonDistincts = value.flatMap(message => [message.emitter, ...message.targets]);
+    const targetsNonDistincts = messages.flatMap(message => [message.emitter, ...message.targets]);
     const targets = [...new Set(targetsNonDistincts)];
     // message : [emitter, target1, target2]
     // message2: [emitter2, target3, target4]
     // [[emitter, target1, target2],[emitter2, target3, target4]] => [emitter, target1, target2, emitter2, target3, target4]
-
-    const sortedMessages = value.sort((message1, message2) => {
-      const date1 = message1.createdAt
-      const date2 = message2.createdAt
-
-      return date1 <= date2 ? 1 : -1;
-      //return date2.valueOf() - date1.valueOf();
-    })
-    const updatedAt = sortedMessages[0].createdAt;
+    const updatedAt = messages.sort()[0].createdAt; // TODO completer sort
     conversations.push({
       _id: key,
       targets: targets,
       updatedAt: updatedAt,
       unseenMessages: 0,
-      messages: sortedMessages
+      messages: value
     })
   }
 
@@ -91,8 +83,8 @@ export async function getConversations(): Promise<IConversation[]> {
     _id: '123',
     conversationId: '1234',
     createdAt: new Date(),
-    emitter: '5f8eb08e8bf2813b9e235976',
-    targets: ['5f8eb0b28bf2813b9e235977'],
+    emitter: '5f8eb41b43b38ab3691eb6d6',
+    targets: ['5f96a6b775a3d01813bf862b'],
     content: 'Salut ça va ?',
   },
   {
@@ -167,4 +159,13 @@ export async function getConversations(): Promise<IConversation[]> {
   //     content: 'Hey ça va ?',
   //   }]
   // }])
+}
+
+export async function sendMessage(content: string, conversationId: string, targets: string[]): Promise<IConversationMessage> {
+  const res = await axios.post(
+    'http://localhost:3000/api/messages',
+    { content, conversationId, targets },
+    { withCredentials: true }
+  );
+  return res.data;
 }
