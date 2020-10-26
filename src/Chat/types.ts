@@ -19,7 +19,8 @@ export const UPDATE_CONVERSATION_LIST = 'UPDATE_CONVERSATION_LIST';
 export const UPDATE_CONVERSATION = 'UPDATE_CONVERSATION';
 
 export interface IConversationsState {
-  list: IConversation[]
+  list: IConversation[];
+  totalUnseenMessages: number;
 }
 
 export interface IUpdateConversationListAction {

@@ -3,6 +3,7 @@ export interface IUser {
   firstname: string;
   lastname: string;
   email: string;
+  conversationsSeen: {[convId: string]: Date};
 }
 
 export interface IUsersState {
