@@ -61,8 +61,9 @@ export async function getConversations(): Promise<IConversation[]>{
    const value = batches[key];
    // 123 => key
    // [message, message2] => value
-   const targetsNonDistincts = messages.flatMap(message => [message.emitter, ...message.targets]);
+   const targetsNonDistincts = value.flatMap(message => [message.emitter, ...message.targets]);
    const targets = [...new Set(targetsNonDistincts)];
+
    // message : [emitter, target1, target2]
    // message2: [emitter2, target3, target4]
    // [[emitter, target1, target2],[emitter2, target3, target4]] => [emitter, target1, target2, emitter2, target3, target4]
@@ -159,4 +160,13 @@ export async function getConversations(): Promise<IConversation[]>{
   //     content: 'Hey ça va ?',
   //   }]
   // }])
+}
+
+export async function sendMessage(content: string, conversationId: string, targets: string[]): Promise<IConversationMessage> {
+  const res = await axios.post(
+    'http://localhost:3000/api/messages',
+    { content, conversationId, targets },
+    { withCredentials: true }
+  );
+  return res.data;
 }
