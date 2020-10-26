@@ -1,32 +1,45 @@
 import { Button, Grid, TextField } from '@material-ui/core';
 import React from 'react';
+import { connect } from 'react-redux';
 import { sendMessage } from '../../api/messages';
+import { updateConversation } from '../actions/updateConversation';
+import { IConversation } from '../types';
 
 interface ChatInputProps {
-  conversationId: string;
-  targets: string[];
+  conversation: IConversation;
+  updateConversation: (conversation: IConversation) => void;
 }
+
 interface ChatInputState {
   messageInput: string
 }
+
 class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
   constructor(props: ChatInputProps){
     super(props);
     this.state = { messageInput: '' }
   }
 
-  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    sendMessage(
+    const sentMessage = await sendMessage(
       this.state.messageInput,
-      this.props.conversationId,
-      this.props.targets
+      this.props.conversation._id,
+      this.props.conversation.targets
     )
     this.setState({
       messageInput: ''
     })
+
     // Update conversation ?
+    // const newConversation = this.props.conversation <- Ceci ne copie pas l'objet !!
+    // newConversation.messages.push(sentMessage) <- Push ne crée pas de nouveau tableau !!
+    const newConversation = {
+      ...this.props.conversation,
+      messages: [...this.props.conversation.messages, sentMessage]
+    };
+    this.props.updateConversation(newConversation);
   }
 
   handleChange = (newMessage: string) => {
@@ -57,4 +70,7 @@ class ChatInput extends React.Component<ChatInputProps, ChatInputState> {
   }
 }
 
-export default ChatInput;
+const mapDispatchToProps = (dispatch: any) => ({
+  updateConversation: (conversation: IConversation) => { dispatch(updateConversation(conversation))}
+})
+export default connect(undefined, mapDispatchToProps)(ChatInput);

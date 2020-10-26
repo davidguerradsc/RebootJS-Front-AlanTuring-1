@@ -16,6 +16,7 @@ export interface IConversationMessage {
 }
 
 export const UPDATE_CONVERSATION_LIST = 'UPDATE_CONVERSATION_LIST';
+export const UPDATE_CONVERSATION = 'UPDATE_CONVERSATION';
 
 export interface IConversationsState {
   list: IConversation[]
@@ -26,4 +27,9 @@ export interface IUpdateConversationListAction {
   conversations: IConversation[]
 }
 
-export type IConversationsAction = IUpdateConversationListAction
+export interface IUpdateConversationAction {
+  type: typeof UPDATE_CONVERSATION,
+  conversation: IConversation
+}
+
+export type IConversationsAction = IUpdateConversationListAction | IUpdateConversationAction;

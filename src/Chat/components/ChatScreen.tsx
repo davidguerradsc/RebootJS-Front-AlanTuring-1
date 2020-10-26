@@ -24,7 +24,7 @@ class ChatScreen extends React.Component<ChatScreenProps> {
       <Fragment>
         <h1>Chat</h1>
         <ChatMessages messages={conversation.messages} />
-        <ChatInput conversationId={conversation._id} targets={conversation.targets}/>
+        <ChatInput conversation={conversation} />
         <AttendeesList users={conversation.targets}/>
       </Fragment>
     )
