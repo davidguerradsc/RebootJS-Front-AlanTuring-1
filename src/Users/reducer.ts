@@ -1,13 +1,13 @@
-import { IUsersAction, IUsersState, LIST_OF_USERS, UPDATE_CONNECTED_USER } from "./types";
+import { IUsersAction, IUsersState, UPDATE_CONNECTED_USER, UPDATE_USERS } from "./types";
 
 export function users(state: IUsersState = defaultUsersState(), action: IUsersAction): IUsersState {
-  switch(action.type){
+  switch (action.type) {
     case UPDATE_CONNECTED_USER:
       return {
         ...state,
         connectedUser: action.user
       }
-    case LIST_OF_USERS:
+    case UPDATE_USERS:
       return {
         ...state,
         list: action.users
@@ -17,7 +17,7 @@ export function users(state: IUsersState = defaultUsersState(), action: IUsersAc
   }
 }
 
-function defaultUsersState(){
+function defaultUsersState() {
   return {
     list: [],
   }

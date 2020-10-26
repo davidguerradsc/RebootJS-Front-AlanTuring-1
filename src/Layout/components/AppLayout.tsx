@@ -7,6 +7,8 @@ import { DrawerContentString } from '../types';
 import { connect } from 'react-redux';
 import { makeFetchConnectedUser } from '../../Users/actions/makeFetchConnectedUser';
 import { makeFetchUsers } from '../../Users/actions/makeFetchUsers';
+import { makeFetchConversations } from '../../Chat/actions/makeFetchConversations';
+import UserDetails from '../../Users/components/UserDetails';
 
 interface AppLayoutState {
   drawerOpened: boolean;
@@ -17,6 +19,7 @@ interface AppLayoutProps {
   classes: any;
   getConnectedUser: () => void;
   getUsers: () => void;
+  getConversations: () => void;
 }
 
 const style = (theme: Theme) => createStyles({
@@ -44,11 +47,12 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
       drawerOpened: false,
     }
   }
-  
+
   // TMP
-  componentDidMount(){
+  componentDidMount() {
     this.props.getConnectedUser();
     this.props.getUsers();
+    this.props.getConversations();
   }
 
   closeDrawer = () => {
@@ -87,8 +91,9 @@ class AppLayout extends React.Component<AppLayoutProps, AppLayoutState> {
 
 // TODO ThunkAction<void, IAppState, unknown, Action<string>>
 const mapDispatchToProps = (dispatch: any) => ({
-  getConnectedUser: () => { dispatch(makeFetchConnectedUser())},
-  getUsers: () => { dispatch(makeFetchUsers())}
+  getConnectedUser: () => { dispatch(makeFetchConnectedUser()) },
+  getUsers: () => { dispatch(makeFetchUsers()) },
+  getConversations: () => { dispatch(makeFetchConversations()) }
 })
 
 export default connect(undefined, mapDispatchToProps)(withStyles(style)(AppLayout));

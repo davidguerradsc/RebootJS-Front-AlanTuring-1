@@ -1,4 +1,5 @@
 export interface IUser {
+  _id: string;
   firstname: string;
   lastname: string;
   email: string;
@@ -17,12 +18,9 @@ export interface IUpdateConnectedUserAction {
   user: IUser
 }
 
-
-export const LIST_OF_USERS = 'LIST_OF_USERS'
-
-export interface IListOfUsersAction {
-  type: typeof LIST_OF_USERS
+export interface IUpdateUsersAction {
+  type: typeof UPDATE_USERS
   users: IUser[]
 }
 
-export type IUsersAction = IUpdateConnectedUserAction | IListOfUsersAction
+export type IUsersAction = IUpdateConnectedUserAction | IUpdateUsersAction
