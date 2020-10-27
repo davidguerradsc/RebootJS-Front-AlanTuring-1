@@ -1,11 +1,13 @@
 import { IConversationsAction, IConversationsState, UPDATE_CONVERSATION, UPDATE_CONVERSATION_LIST, UPDATE_POLLING_TIMER } from "./types"
 
-export function conversations(state: IConversationsState = defaultConversationsState(), action: IConversationsAction): IConversationsState{
-  switch(action.type){
+export function conversations(state: IConversationsState = defaultConversationsState(), action: IConversationsAction): IConversationsState {
+  switch (action.type) {
     case UPDATE_CONVERSATION_LIST:
       return {
         ...state,
-        list: action.conversations
+        list: action.conversations,
+        totalUnseenMessages: action.conversations.reduce((acc, conv) => acc + conv.unseenMessages, 0)
+
       }
     case UPDATE_CONVERSATION:
       return {
@@ -25,8 +27,9 @@ export function conversations(state: IConversationsState = defaultConversationsS
   }
 }
 
-function defaultConversationsState(){
+function defaultConversationsState() {
   return {
-    list: []
+    list: [],
+    totalUnseenMessages: 0
   }
 }

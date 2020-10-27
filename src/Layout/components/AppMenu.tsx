@@ -4,7 +4,7 @@ import React from 'react';
 import { ContactListButton } from './ContactListButton';
 import { ProfileButton } from './ProfileButton';
 import { DrawerContentString } from '../types';
-import { ConversationsButton } from './ConversationsButton';
+import  ConversationsButton  from './ConversationsButton';
 import { connect } from 'react-redux';
 
 interface AppMenuProps {
