@@ -5,7 +5,9 @@ export function conversations(state: IConversationsState = defaultConversationsS
     case UPDATE_CONVERSATION_LIST:
       return {
         ...state,
-        list: action.conversations
+        list: action.conversations,
+        totalUnseenMessages: action.conversations.reduce((acc, conv) => acc + conv.unseenMessages, 0)
+
       }
     case UPDATE_CONVERSATION:
       return {
@@ -27,6 +29,7 @@ export function conversations(state: IConversationsState = defaultConversationsS
 
 function defaultConversationsState(){
   return {
-    list: []
+    list: [],
+    totalUnseenMessages: 0
   }
 }

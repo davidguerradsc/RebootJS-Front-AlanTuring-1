@@ -21,7 +21,7 @@ export const UPDATE_POLLING_TIMER = 'UPDATE_POLLING_TIMER';
 
 export interface IConversationsState {
   list: IConversation[];
-  // totalUnseenMessages: number;
+  totalUnseenMessages: number;
   timer?: NodeJS.Timeout;
 }
 
