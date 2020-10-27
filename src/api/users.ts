@@ -35,7 +35,7 @@ export function register(email: string, firstname: string, lastname: string, pas
   ).then(res => res.data)
 }
 
-export function patchConversationSeen(conversationId: string) {
+export function patchConversationSeen(conversationId: string){
   return axios.patch(
     'http://localhost:3000/api/users/conversation-seen',
     { conversationId },

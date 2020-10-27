@@ -22,12 +22,12 @@ componentDidUpdate(prevProps){
 */
 
 interface ChatMessagesProps {
-  messages: IConversationMessage[];
+  messages : IConversationMessage[];
   conversationId: string;
   makeUpdateConversationSeen: (convId: string) => void;
 }
 
-function ChatMessages({ messages, conversationId, makeUpdateConversationSeen }: ChatMessagesProps) {
+function ChatMessages({messages, conversationId, makeUpdateConversationSeen} : ChatMessagesProps){
   useEffect(
     () => {
       makeUpdateConversationSeen(conversationId)
