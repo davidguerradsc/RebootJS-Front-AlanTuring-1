@@ -13,7 +13,7 @@ interface ConversationsButtonProps {
 
 function ConversationsButton({ toggleDrawer, unseenMessage }: ConversationsButtonProps) {
   return (
-    <Badge badgeContent={unseenMessage} color="primary">
+    <Badge badgeContent={unseenMessage} color="secondary">
       <IconButton aria-label="contacts" onClick={e => toggleDrawer("conversations")}>
         <Forum fontSize="large" />
       </IconButton>
@@ -21,7 +21,7 @@ function ConversationsButton({ toggleDrawer, unseenMessage }: ConversationsButto
   );
 }
 
-const mapStateToProps = ({ conversations }: IAppState) => ({
+const mapStateToProps = ({conversations}: IAppState) => ({
   unseenMessage: conversations.totalUnseenMessages
 })
 

@@ -32,7 +32,7 @@ function ChatMessages({messages, conversationId, makeUpdateConversationSeen} : C
     () => {
       makeUpdateConversationSeen(conversationId)
     },
-    [messages, conversationId, makeUpdateConversationSeen]
+    [messages.length]
   )
 
   return (

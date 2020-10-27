@@ -2,11 +2,11 @@ import { getConversations } from "../../api/messages"
 import { IAppState } from "../../appReducer";
 import { updateConversationList } from "./updateConversationList"
 
-export function makeFetchConversations() {
+export function makeFetchConversations(){
   return async (dispatch: any, getState: () => IAppState) => {
     try {
       const connectedUser = getState().users.connectedUser;
-      if (!connectedUser) { return }
+      if(!connectedUser) { return }
 
       const conversations = await getConversations();
 
@@ -18,12 +18,12 @@ export function makeFetchConversations() {
       conversations.map(conversation => {
         const lastSeenDate = connectedUser.conversationsSeen[conversation._id]
         let unseenMessages;
-        if (!lastSeenDate) {
+        if(!lastSeenDate) {
           unseenMessages = conversation.messages.length;
         } else {
           unseenMessages = conversation.messages
-            .filter(message => new Date(message.createdAt) > new Date(lastSeenDate))
-            .length
+                      .filter(message => new Date(message.createdAt) > new Date(lastSeenDate))
+                      .length
         }
         conversation.unseenMessages = unseenMessages;
         return conversation
