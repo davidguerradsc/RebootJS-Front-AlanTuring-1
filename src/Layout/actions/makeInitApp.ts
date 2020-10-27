@@ -14,7 +14,7 @@ export function makeInitApp(){
       if(getState().users.connectedUser) {
         dispatch(makeFetchConversations())
       }
-    }, 3000)
+    }, 3000);
     dispatch(updatePollingTimer(timer));
   }
 }
