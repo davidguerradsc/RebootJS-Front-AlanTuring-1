@@ -1,26 +1,17 @@
 import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import React from 'react';
 import { IUser } from '../types';
+import UserDetails from './UserDetails';
 
 interface UsersListItemProps {
-    user: IUser;
+  user: IUser;
 }
 
 class UsersListItem extends React.Component<UsersListItemProps> {
-  render(){
+  render() {
     const user = this.props.user;
     return (
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            {user.firstname[0]}{user.lastname[0]}
-          </Avatar>
-        </ListItemAvatar>
-        
-        <ListItemText
-          primary={`${user.firstname} ${user.lastname}`}
-        />
-      </ListItem>
+      <UserDetails id={user._id} />
     )
   }
 }
