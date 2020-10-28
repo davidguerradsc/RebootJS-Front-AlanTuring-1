@@ -4,7 +4,7 @@ export interface IUser {
   lastname: string;
   email: string;
   conversationsSeen: {[convId: string]: Date};
-  status: 'online' | ' offline';
+  status: 'online' | 'offline';
 }
 
 export interface IUsersState {

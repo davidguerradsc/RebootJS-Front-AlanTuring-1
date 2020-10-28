@@ -14,7 +14,7 @@ export function makeInitApp(){
 
     const timer = setInterval(() => {
       if(getState().users.connectedUser) {
-        dispatch(makeFetchConversations())
+        // dispatch(makeFetchConversations())
       }
     }, 3000);
     dispatch(updatePollingTimer(timer));

@@ -2,7 +2,7 @@ import { IAppState } from "../../appReducer";
 import { IUser } from "../types";
 import { updateUsers } from "./updateUsers";
 
-export function makeUpdateUser(userToUpdate: IUser) {
+export function makeUpdateUser(userToUpdate: IUser){
   return (dispatch: any, getState: () => IAppState) => {
     const users = getState().users.list;
 

@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 import { makeUpdateUser } from '../../Users/actions/makeUpdateUser';
 import { IUser } from '../../Users/types';
 
-export function makeStartSocket() {
+export function makeStartSocket(){
   return (dispatch: any) => {
     const socketServer = io.connect('http://localhost:3000');
 
@@ -14,7 +14,7 @@ export function makeStartSocket() {
       console.log(data);
     })
 
-    socketServer.on('user-status-update', ({ user }: { user: IUser }) => {
+    socketServer.on('user-status-update', ({user}: {user: IUser}) => {
       dispatch(makeUpdateUser(user));
     })
   }

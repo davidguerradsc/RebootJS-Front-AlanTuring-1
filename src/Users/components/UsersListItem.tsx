@@ -1,4 +1,3 @@
-import { ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
 import React from 'react';
 import { IUser } from '../types';
 import UserDetails from './UserDetails';
