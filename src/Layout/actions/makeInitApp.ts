@@ -9,15 +9,12 @@ export function makeInitApp(){
   return (dispatch: any, getState: () => IAppState) => {
     dispatch(makeFetchConnectedUser())
     dispatch(makeFetchUsers())
-
-    if(getState().users.connectedUser){
-      dispatch(makeFetchConversations())
-      dispatch(makeStartSocket())
-    }
+    dispatch(makeFetchConversations())
+    dispatch(makeStartSocket())
 
     const timer = setInterval(() => {
       if(getState().users.connectedUser) {
-        dispatch(makeFetchConversations())
+        // dispatch(makeFetchConversations())
       }
     }, 3000);
     dispatch(updatePollingTimer(timer));

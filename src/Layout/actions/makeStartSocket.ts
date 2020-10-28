@@ -1,4 +1,6 @@
 import io from 'socket.io-client';
+import { makeUpdateUser } from '../../Users/actions/makeUpdateUser';
+import { IUser } from '../../Users/types';
 
 export function makeStartSocket(){
   return (dispatch: any) => {
@@ -10,6 +12,10 @@ export function makeStartSocket(){
 
     socketServer.on('mon-super-event', (data: any) => {
       console.log(data);
+    })
+
+    socketServer.on('user-status-update', ({user}: {user: IUser}) => {
+      dispatch(makeUpdateUser(user));
     })
   }
 }
