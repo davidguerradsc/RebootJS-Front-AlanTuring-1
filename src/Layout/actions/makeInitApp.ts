@@ -4,7 +4,7 @@ import { makeFetchConnectedUser } from "../../Users/actions/makeFetchConnectedUs
 import { makeFetchUsers } from "../../Users/actions/makeFetchUsers"
 import { makeStartSocket } from "./makeStartSocket"
 
-export function makeInitApp() {
+export function makeInitApp(){
   return async (dispatch: any, getState: () => IAppState) => {
     await dispatch(makeFetchConnectedUser())
     dispatch(makeFetchUsers())
