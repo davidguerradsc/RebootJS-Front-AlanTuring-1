@@ -16,13 +16,17 @@ class UsersList extends React.Component<UsersListProps>{
       return <h1>Loading</h1>
     } else {
       return <List>
-        {this.props.users.map((user, index) => <UsersListItem key={index} user={user} connectedUser={this.props.connectedUser} />)}
+        {this.props.users.map((user, index) => <UsersListItem
+                                                key={index}
+                                                user={user}
+                                                connectedUser={this.props.connectedUser}
+                                              />)}
       </List>
     }
   }
 }
 
-const mapStateToProps = ({ users }: IAppState) => ({
+const mapStateToProps = ({users} : IAppState) => ({
   users: users.list,
   connectedUser: users.connectedUser
 });
