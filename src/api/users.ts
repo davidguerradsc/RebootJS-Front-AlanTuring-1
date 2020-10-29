@@ -5,6 +5,7 @@ export function getUsers(): Promise<IUser[]> {
   return axios.get(`${process.env.REACT_APP_BACKEND}/api/users/`).then(res => res.data);
 }
 
+
 export function getConnectedUser(): Promise<IUser> {
   return axios.get(
     `${process.env.REACT_APP_BACKEND}/api/users/me`,
