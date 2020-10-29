@@ -2,19 +2,19 @@ import axios from "axios"
 import { IUser } from "../Users/types";
 
 export function getUsers(): Promise<IUser[]> {
-    return axios.get('http://localhost:3000/api/users/').then(res => res.data);
+  return axios.get(`${process.env.REACT_APP_BACKEND}/api/users/`).then(res => res.data);
 }
 
 export function getConnectedUser(): Promise<IUser> {
   return axios.get(
-    'http://localhost:3000/api/users/me',
+    `${process.env.REACT_APP_BACKEND}/api/users/me`,
     { withCredentials: true }
   ).then(res => res.data);
 }
 
 export function login(email: string, password: string): Promise<IUser>{
   return axios.post(
-    'http://localhost:3000/api/login/',
+    `${process.env.REACT_APP_BACKEND}/api/login/`,
     {
       username: email,
       password: password
@@ -27,7 +27,7 @@ export function login(email: string, password: string): Promise<IUser>{
 
 export function register(email: string, firstname: string, lastname: string, password: string): Promise<IUser>{
   return axios.post(
-    'http://localhost:3000/api/users/',
+    `${process.env.REACT_APP_BACKEND}/api/users/`,
     { email, firstname, lastname, password },
     {
       withCredentials: true
@@ -37,7 +37,7 @@ export function register(email: string, firstname: string, lastname: string, pas
 
 export function patchConversationSeen(conversationId: string){
   return axios.patch(
-    'http://localhost:3000/api/users/conversation-seen',
+    `${process.env.REACT_APP_BACKEND}/api/users/conversation-seen`,
     { conversationId },
     {
       withCredentials: true
