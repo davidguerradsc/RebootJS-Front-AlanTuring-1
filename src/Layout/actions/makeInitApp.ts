@@ -1,6 +1,6 @@
 import { IAppState } from "../../appReducer"
 import { makeFetchConversations } from "../../Chat/actions/makeFetchConversations"
-import { makeFetchConnectedUser } from "../../Users/actions/makeFetchConnectedUser"
+import { makeFetchConnectedUser } from "../../Users/actions/makefetchConnectedUser"
 import { makeFetchUsers } from "../../Users/actions/makeFetchUsers"
 import { makeStartSocket } from "./makeStartSocket"
 
