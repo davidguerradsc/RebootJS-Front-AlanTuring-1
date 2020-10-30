@@ -13,7 +13,7 @@ export function ConversationsListItem({conversation} : {conversation: IConversat
       key={conversation._id}>
         <ListItemText
           primary={conversation._id}
-          secondary={conversation.messages[0].content}
+          secondary={conversation.messages[0]?.content || "no messages..."}
         />
     </ListItem>
   )
