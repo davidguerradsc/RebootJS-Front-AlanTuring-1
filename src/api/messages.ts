@@ -4,7 +4,7 @@ import { IConversation, IConversationMessage } from "../Chat/types";
 export async function getConversations(): Promise<IConversation[]> {
   // axios vers le back pour récuperer les messages
   const res = await axios.get(`${process.env.REACT_APP_BACKEND}/api/messages`, { withCredentials: true });
-  const messages: IConversationMessage[] = res.data;
+  const messages : IConversationMessage[] = res.data;
 
   // processus de transformation des messages -> une liste de conversations
 
@@ -52,7 +52,6 @@ export async function getConversations(): Promise<IConversation[]> {
 
   //// ----------- Fin 1ERE ETAPE ----------
 
-  // ---------------
   // 2eme étape : Créer les types depuis la liste de messages, restructure
   // { 123: [message, message2], 12345: [xxx], 1234: [xxx] } => [ conversation1, conversation2 ]
 
